@@ -12,8 +12,12 @@ class App extends Component {
       cart: [],
       showCart: false
     };
+    this.addToCart = this.addToCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
+    this.navigate = this.navigate.bind(this)
   }
   componentDidMount() {
+    console.log(this.setState)
     axios
       .get("https://practiceapi.devmountain.com/products/")
       .then(response => {
@@ -36,9 +40,14 @@ class App extends Component {
   }
   navigate(location) {
     if (location === "cart") {
-      this.state.showCart = true;
-    } else {
-      this.state.showCart = false;
+      this.setState({
+        showCart:true
+      })
+    }  else {
+      console.log(this.state)
+        this.setState({
+        showCart:false
+        })
     }
   }
   render() {
